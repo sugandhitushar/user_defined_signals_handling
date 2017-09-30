@@ -1,0 +1,21 @@
+NAME - Handling user defined signals
+
+USAGE - 
+$ make
+$ make run
+
+DESCRIPTION - 
+Creates a child process using fork(). Prior to fork(), parent defines signal handlers for the user defined signals SIGUSR1 and SIGUSR2.
+Once fork() is completed, execl() creates an independent process and both the user defined signals are sent to parent where they are handled appropriately.
+
+Example -
+# make
+gcc -o user_defined_signal_client user_defined_signal_client.c
+gcc -o user_defined_signal user_defined_signal.c
+# make run
+./user_defined_signal
+fork completed
+user_defined_signal_client
+Handled SIGUSR2(12) by process: 5812
+Handled SIGUSR1(10) by process: 5812
+Terminated child with pid=5813 and status=0
